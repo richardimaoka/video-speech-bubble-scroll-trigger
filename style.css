@@ -1,17 +1,29 @@
 body {
+  /* spacing */
   margin: 0;
+  height: 100vh;
+  
+  /* coloring */
   background: black;
+  
+  /* layout */
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
 .circle {
+  /* sizing */
   width: 200px;
   height: 200px;
+  
+  /* coloring */
   background: white;
+  
+  /* styling */
   border-radius: 50%;
+  
+  /* animation */
   animation: fadeIn 1s;
 }
 
