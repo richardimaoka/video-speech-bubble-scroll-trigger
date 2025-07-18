@@ -7,10 +7,11 @@ body {
   height: 100vh;
 }
 
-.box {
+.circle {
   width: 200px;
   height: 200px;
   background: white;
+  border-radius: 50%;
   animation: fadeIn 1s;
 }
 
