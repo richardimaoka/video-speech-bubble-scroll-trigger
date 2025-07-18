@@ -4,7 +4,7 @@ body {
   height: 100vh;
 
   /* coloring */
-  background: black;
+  background: rgb(223, 223, 223);
 
   /* layout */
   display: grid;
@@ -19,7 +19,7 @@ body {
   animation: fadeIn 1s;
 }
 
-@keyframes fadeIn {
+/* @keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -28,7 +28,7 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
+} */
 
 .circle {
   /* sizing */
@@ -46,69 +46,38 @@ body {
 }
 
 .speech-bubble {
-  /* sizing */
-  max-width: 28ch;
-
-  /* spacing */
-  padding: 1em;
-
-  /* coloring */
-  color: #fff;
-
-  /* typography */
-  font-size: 18px;
-  text-align: center;
-
-  /* layout */
   position: relative;
-
-  /* custom properties */
-  --a: 90deg; /* angle */
-  --h: 1em; /* height */
-  --p: 50%; /* triangle position (0%:top 100%:bottom) */
-  --b: 5px; /* border width */
-
-  /* styling */
-  clip-path: polygon(
-    100% 100%,
-    0 100%,
-    0 0,
-    100% 0,
-    100% max(0%, var(--p) - var(--h) * tan(var(--a) / 2)),
-    calc(100% + var(--h)) var(--p),
-    100% min(100%, var(--p) + var(--h) * tan(var(--a) / 2))
-  );
-  border-image: fill 0 0 var(--h) conic-gradient(#18173b 0 0); /* the border color */
+  background-color: white;
+  border: 3px solid black;
+  padding: 20px 30px;
+  max-width: 300px;
+  font-size: 16px;
+  text-align: center;
 }
 
-.speech-bubble:before {
-  /* content */
+.speech-bubble::after {
   content: "";
-
-  /* layout */
   position: absolute;
-  z-index: -1;
-  inset: 0 var(--b);
+  top: 50%;
+  right: -15px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+  border-left: 15px solid white;
+}
 
-  /* styling */
-  clip-path: polygon(
-    100% 100%,
-    0 100%,
-    0 0,
-    100% 0,
-    100%
-      max(
-        var(--b),
-        var(--p) - var(--h) * tan(var(--a) / 2) + var(--b) *
-          tan(45deg - var(--a) / 4)
-      ),
-    calc(100% + var(--h) + var(--b) * (1 - 1 / sin(var(--a) / 2))) var(--p),
-    100%
-      min(
-        100% - var(--b),
-        var(--p) + var(--h) * tan(var(--a) / 2) - var(--b) *
-          tan(45deg - var(--a) / 4)
-      )
-  );
-  border-image: fill 0 / var(--b) 0/0 var(--h) conic-gradient(#79bd9a 0 0); /* the background color */
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -18px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 18px solid transparent;
+  border-bottom: 18px solid transparent;
+  border-left: 18px solid black;
+  z-index: -1;
 }
