@@ -12,19 +12,8 @@ body {
   align-content: center;
 }
 
-.circle {
-  /* sizing */
-  width: 200px;
-  height: 200px;
-
-  /* coloring */
-  background: white;
-  background-image: url("images/face-1.png");
-  background-size: cover;
-  background-position: center;
-
-  /* styling */
-  border-radius: 50%;
+.speech-container {
+  display: grid;
 
   /* animation */
   animation: fadeIn 1s;
@@ -41,29 +30,44 @@ body {
   }
 }
 
+.circle {
+  /* sizing */
+  width: 130px;
+  height: 130px;
+
+  /* coloring */
+  background: white;
+  background-image: url("/images/face-1.png");
+  background-size: cover;
+  background-position: center;
+
+  /* styling */
+  border-radius: 50%;
+}
+
 .speech-bubble {
   /* sizing */
   max-width: 28ch;
-  
+
   /* spacing */
   padding: 1em;
-  
+
   /* coloring */
   color: #fff;
-  
+
   /* typography */
   font-size: 18px;
   text-align: center;
-  
+
   /* layout */
   position: relative;
-  
+
   /* custom properties */
   --a: 90deg; /* angle */
   --h: 1em; /* height */
   --p: 50%; /* triangle position (0%:top 100%:bottom) */
   --b: 5px; /* border width */
-  
+
   /* styling */
   clip-path: polygon(
     100% 100%,
@@ -80,12 +84,12 @@ body {
 .speech-bubble:before {
   /* content */
   content: "";
-  
+
   /* layout */
   position: absolute;
   z-index: -1;
   inset: 0 var(--b);
-  
+
   /* styling */
   clip-path: polygon(
     100% 100%,
