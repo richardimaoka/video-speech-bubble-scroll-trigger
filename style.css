@@ -42,19 +42,29 @@ body {
 }
 
 .speech-bubble {
-  color: #fff;
-  font-size: 18px;
+  /* sizing */
   max-width: 28ch;
+  
+  /* spacing */
+  padding: 1em;
+  
+  /* coloring */
+  color: #fff;
+  
+  /* typography */
+  font-size: 18px;
   text-align: center;
-
-  /* triangle dimension */
+  
+  /* layout */
+  position: relative;
+  
+  /* custom properties */
   --a: 90deg; /* angle */
   --h: 1em; /* height */
-
   --p: 50%; /* triangle position (0%:top 100%:bottom) */
   --b: 5px; /* border width */
-
-  padding: 1em;
+  
+  /* styling */
   clip-path: polygon(
     100% 100%,
     0 100%,
@@ -64,16 +74,19 @@ body {
     calc(100% + var(--h)) var(--p),
     100% min(100%, var(--p) + var(--h) * tan(var(--a) / 2))
   );
-
   border-image: fill 0 0 var(--h) conic-gradient(#18173b 0 0); /* the border color */
-  position: relative;
 }
 
 .speech-bubble:before {
+  /* content */
   content: "";
+  
+  /* layout */
   position: absolute;
   z-index: -1;
   inset: 0 var(--b);
+  
+  /* styling */
   clip-path: polygon(
     100% 100%,
     0 100%,
