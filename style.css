@@ -19,6 +19,9 @@ body {
   
   /* coloring */
   background: white;
+  background-image: url('images/face-1.png');
+  background-size: cover;
+  background-position: center;
   
   /* styling */
   border-radius: 50%;
