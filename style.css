@@ -2,30 +2,30 @@ body {
   /* spacing */
   margin: 0;
   height: 100vh;
-  
+
   /* coloring */
   background: black;
-  
+
   /* layout */
-  display: flex;
+  display: grid;
   justify-content: center;
-  align-items: center;
+  align-content: center;
 }
 
 .circle {
   /* sizing */
   width: 200px;
   height: 200px;
-  
+
   /* coloring */
   background: white;
-  background-image: url('images/face-1.png');
+  background-image: url("images/face-1.png");
   background-size: cover;
   background-position: center;
-  
+
   /* styling */
   border-radius: 50%;
-  
+
   /* animation */
   animation: fadeIn 1s;
 }
@@ -39,4 +39,59 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.speech-bubble {
+  color: #fff;
+  font-size: 18px;
+  max-width: 28ch;
+  text-align: center;
+
+  /* triangle dimension */
+  --a: 90deg; /* angle */
+  --h: 1em; /* height */
+
+  --p: 50%; /* triangle position (0%:top 100%:bottom) */
+  --b: 5px; /* border width */
+
+  padding: 1em;
+  clip-path: polygon(
+    100% 100%,
+    0 100%,
+    0 0,
+    100% 0,
+    100% max(0%, var(--p) - var(--h) * tan(var(--a) / 2)),
+    calc(100% + var(--h)) var(--p),
+    100% min(100%, var(--p) + var(--h) * tan(var(--a) / 2))
+  );
+
+  border-image: fill 0 0 var(--h) conic-gradient(#18173b 0 0); /* the border color */
+  position: relative;
+}
+
+.speech-bubble:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0 var(--b);
+  clip-path: polygon(
+    100% 100%,
+    0 100%,
+    0 0,
+    100% 0,
+    100%
+      max(
+        var(--b),
+        var(--p) - var(--h) * tan(var(--a) / 2) + var(--b) *
+          tan(45deg - var(--a) / 4)
+      ),
+    calc(100% + var(--h) + var(--b) * (1 - 1 / sin(var(--a) / 2))) var(--p),
+    100%
+      min(
+        100% - var(--b),
+        var(--p) + var(--h) * tan(var(--a) / 2) - var(--b) *
+          tan(45deg - var(--a) / 4)
+      )
+  );
+  border-image: fill 0 / var(--b) 0/0 var(--h) conic-gradient(#79bd9a 0 0); /* the background color */
 }
