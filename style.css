@@ -15,12 +15,15 @@ body {
 .speech-container {
   /* layout */
   display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  column-gap: 40px;
 
   /* animation */
   animation: fadeIn 1s;
 }
 
-/* @keyframes fadeIn {
+@keyframes fadeIn {
   from {
     opacity: 0;
     transform: translateY(40px);
@@ -29,7 +32,7 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-} */
+}
 
 .circle {
   /* sizing */
