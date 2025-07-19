@@ -44,25 +44,36 @@ body {
 
   /* styling */
   border-radius: 50%;
+  border-width: 8px;
+  border-color: rgb(85, 42, 163);
+  border-style: solid;
 }
 
 .speech-bubble {
-  /* sizing */
-  max-width: 300px;
-
   /* spacing */
-  padding: 20px 30px;
+  padding: 20px;
 
   /* coloring */
   background-color: white;
-  border: 3px solid black;
+
+  /* border */
+  --border-width: 8px;
+  --border-color: rgb(85, 42, 163);
+  border: var(--border-width) solid var(--border-color);
 
   /* typography */
-  font-size: 16px;
+  font-size: 24px;
+  font-weight: 700;
   text-align: center;
 
   /* layout */
   position: relative;
+
+  /* variables to be used in :before and :after */
+  --inner-triangle-height: 15px;
+  --outer-triangle-height: calc(
+    var(--inner-triangle-height) + var(--border-width) / cos(45deg)
+  );
 }
 
 .speech-bubble::after {
@@ -76,13 +87,13 @@ body {
   /* layout */
   position: absolute;
   top: 50%;
-  right: -15px;
   transform: translateY(-50%);
+  right: calc(-1 * var(--inner-triangle-height));
 
   /* styling */
-  border-top: 15px solid transparent;
-  border-bottom: 15px solid transparent;
-  border-left: 15px solid white;
+  border-top: var(--inner-triangle-height) solid transparent;
+  border-bottom: var(--inner-triangle-height) solid transparent;
+  border-left: var(--inner-triangle-height) solid white;
 }
 
 .speech-bubble::before {
@@ -94,14 +105,14 @@ body {
   height: 0;
 
   /* layout */
+  z-index: -1;
   position: absolute;
   top: 50%;
-  right: -18px;
   transform: translateY(-50%);
-  z-index: -1;
+  right: calc(-1 * var(--outer-triangle-height));
 
   /* styling */
-  border-top: 18px solid transparent;
-  border-bottom: 18px solid transparent;
-  border-left: 18px solid black;
+  border-top: var(--outer-triangle-height) solid transparent;
+  border-bottom: var(--outer-triangle-height) solid transparent;
+  border-left: var(--outer-triangle-height) solid var(--border-color);
 }
